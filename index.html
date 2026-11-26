@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SleepLog | Diário do sono</title>
+  <meta name="description" content="Registre quando dorme e acorda, veja a média de sono da semana e o gráfico da qualidade do descanso.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="estrelas-fundo" aria-hidden="true"></div>
+  <header class="topo">
+    <h1 class="marca">🌙 Sleep<b>Log</b></h1>
+    <nav class="semana" aria-label="Semana"><button class="icone" id="ant" aria-label="Semana anterior">‹</button><span id="sem-label"></span><button class="icone" id="prox" aria-label="Próxima semana">›</button></nav>
+  </header>
+
+  <main class="layout">
+    <section class="cartao registrar">
+      <h2>Registrar noite</h2>
+      <form id="form" class="form" autocomplete="off">
+        <label>Noite de<input type="date" id="f-data" required></label>
+        <div class="g2">
+          <label>Fui dormir<input type="time" id="f-deitou" required></label>
+          <label>Acordei<input type="time" id="f-acordou" required></label>
+        </div>
+        <p class="previa" id="previa"></p>
+        <fieldset class="qualidade">
+          <legend>Como foi o sono?</legend>
+          <div id="f-qual" role="radiogroup" aria-label="Qualidade do sono"></div>
+        </fieldset>
+        <div class="tags" id="f-tags" aria-label="O que influenciou"></div>
+        <label>Anotação<input id="f-nota" maxlength="120" placeholder="Opcional"></label>
+        <button class="btn">Salvar noite</button>
+      </form>
+    </section>
+
+    <section class="cartao painel">
+      <div class="numeros" id="numeros"></div>
+      <div class="grafico-wrap">
+        <div class="legenda"><span class="l-meta">Meta <b id="meta-txt">8h</b></span><span class="q q1">ruim</span><span class="q q3">ok</span><span class="q q5">ótimo</span></div>
+        <div class="grafico" id="grafico" aria-label="Horas de sono por noite"></div>
+      </div>
+      <ul class="noites" id="noites"></ul>
+      <label class="meta">Meta de sono por noite <select id="meta"><option>6</option><option>6.5</option><option>7</option><option>7.5</option><option selected>8</option><option>8.5</option><option>9</option></select> horas</label>
+    </section>
+  </main>
+  <div class="toast" id="toast" role="status" hidden></div>
+  <script src="js/script.js"></script>
+</body>
+</html>
